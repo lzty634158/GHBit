@@ -101,7 +101,6 @@ namespace GHBit {
     }
     
     export enum enColor {
-
         //% blockId="OFF" block="熄灭"
         OFF = 0,
         //% blockId="RED" block="红色"
@@ -118,7 +117,6 @@ namespace GHBit {
         PINKISH,
         //% blockId="YELLOW" block="黄色"
         YELLOW
-
     }
     
     function i2cwrite(addr: number, reg: number, value: number) {
