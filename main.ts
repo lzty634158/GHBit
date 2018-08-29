@@ -285,7 +285,7 @@ namespace GHBit {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
     export function Rocker(value: enRocker): boolean {
 
-        pins.setPull(pin3, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P8, PinPullMode.PullUp);
         let x = pins.analogReadPin(AnalogPin.P1);
         let y = pins.analogReadPin(AnalogPin.P2);
         let z = pins.digitalReadPin(DigitalPin.P8);
