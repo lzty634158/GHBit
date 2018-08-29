@@ -228,7 +228,7 @@ namespace GHBit {
     //% blockId=GHBit_Servo_Handle block="Servo_Handle|num %num|value %value"
     //% weight=97
     //% blockGap=10
-    //% color="#006400"
+    //% color="#C814B8"
     //% num.min=1 num.max=4 value.min=0 value.max=180
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
     export function Servo_Handle(num: enServo, value: number): void {
@@ -258,5 +258,23 @@ namespace GHBit {
         // read pulse
         let d = pins.pulseIn(DigitalPin.P11, PulseValue.High, 43200);
         return d / 58;
+    }
+    
+    //% blockId=GHBit_Min_Motor_Shake block="Min_Motor_Shake|value %value"
+    //% weight=95
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
+    export function Min_Motor_Shake(value: Motorshock): void {
+        switch (value) {
+            case Motorshock.OFF: {
+              setPwm(0, 0, 4095);
+              break;
+            }
+            case Motorshock.ON: {
+              setPwm(0, 0, 0);
+              break;
+            }
+        }               
     }
 }
