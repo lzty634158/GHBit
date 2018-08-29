@@ -166,7 +166,7 @@ namespace ghbit {
     }  
     
     //% blockId=ghbit_Music_Handle block="Music_Handle|%index"
-    //% weight=95
+    //% weight=98
     //% blockGap=10
     //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -196,7 +196,7 @@ namespace ghbit {
     }
     
     //% blockId=ghbit_Servo_Handle block="Servo_Handle|num %num|value %value"
-    //% weight=94
+    //% weight=97
     //% blockGap=10
     //% color="#006400"
     //% num.min=1 num.max=4 value.min=0 value.max=180
@@ -212,7 +212,7 @@ namespace ghbit {
         
 		//% blockId=ghbit_Ultrasonic_Handle block="ultrasonic return distance(cm)"
     //% color="#006400"
-    //% weight=88
+    //% weight=96
     //% blockGap=10
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Ultrasonic_Handle(): number {
