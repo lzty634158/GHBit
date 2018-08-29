@@ -379,51 +379,34 @@ namespace GHBit {
     export function RGB_Colorful(value: enColor): void {
          switch (value) {
             case enColor.OFF: {
-              setPwm(15, 0, 0);
-              setPwm(14, 0, 0);
-              setPwm(13, 0, 0);
               break;
             }
             case enColor.RED: {
-              setPwm(15, 0, 4095);
-              setPwm(14, 0, 0);
-              setPwm(13, 0, 0);
+
               break;
             }
             case enColor.GREEN: {
-              setPwm(15, 0, 0);
-              setPwm(14, 0, 4095);
-              setPwm(13, 0, 0);
+
               break;
             }
             case enColor.BLUE: {
-              setPwm(15, 0, 0);
-              setPwm(14, 0, 0);
-              setPwm(13, 0, 4095);
+
               break;
             }
             case enColor.WHITE: {
-              setPwm(15, 0, 4095);
-              setPwm(14, 0, 4095);
-              setPwm(13, 0, 4095);
+
               break;
             }
             case enColor.CYAN: {
-              setPwm(15, 0, 0);
-              setPwm(14, 0, 4095);
-              setPwm(13, 0, 4095);
+
               break;
             }
             case enColor.PINKISH: {
-              setPwm(15, 0, 4095);
-              setPwm(14, 0, 0);
-              setPwm(13, 0, 4095);
+
               break;
             }
             case enColor.YELLOW: {
-              setPwm(15, 0, 4095);
-              setPwm(14, 0, 4095);
-              setPwm(13, 0, 0);
+
               break;
             }
         }
