@@ -100,27 +100,6 @@ namespace GHBit {
         B4
     }
     
-     export enum enColor {
-
-        //% blockId="OFF" block="灭"
-        OFF = 0,
-        //% blockId="Red" block="红色"
-        Red,
-        //% blockId="Green" block="绿色"
-        Green,
-        //% blockId="Blue" block="蓝色"
-        Blue,
-        //% blockId="White" block="白色"
-        White,
-        //% blockId="Cyan" block="青色"
-        Cyan,
-        //% blockId="Pinkish" block="品红"
-        Pinkish,
-        //% blockId="Yellow" block="黄色"
-        Yellow
-
-    }
-    
     function i2cwrite(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
         buf[0] = reg
