@@ -62,6 +62,14 @@ namespace GHBit {
         S3,
         S4
     }
+    
+    export enum Motorshock {
+        //% blockId="OFF" block="关"
+        OFF = 0,
+        //% blockId="ON" block="开"
+        ON
+		}
+			
 
     function i2cwrite(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
@@ -200,6 +208,24 @@ namespace GHBit {
         // read pulse
         let d = pins.pulseIn(DigitalPin.P11, PulseValue.High, 43200);
         return d / 58;
+    }
+    
+    //% blockId=GHBit_Min_Motor_Shake block="Min_Motor_Shake|value %value"
+    //% weight=95
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
+    export function Min_Motor_Shake(value: Motorshock): void {
+        switch (value) {
+            case Motorshock.OFF: {
+              setPwm(0, 0, 4000);
+              break;
+            }
+            case Motorshock.ON: {
+              setPwm(0, 0, 0);
+              break;
+        		}
+        }               
     }
 
 }
