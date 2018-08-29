@@ -100,7 +100,7 @@ namespace GHBit {
         B4
     }
     
-     export enum enColor {
+    export enum enColor {
 
         //% blockId="OFF" block="熄灭"
         OFF = 0,
