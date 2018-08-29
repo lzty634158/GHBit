@@ -301,14 +301,14 @@ namespace GHBit {
 
     }
     
-    //% blockId=GHBit_Button block="Button|pin %pin|value %value"
-    //% weight=100
+    //% blockId=GHBit_Button block="Button|num %num|value %value"
+    //% weight=93
     //% blockGap=10
     //% color="#808080"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
-    export function Button(pin: enButton, value: enButtonState): boolean {
+    export function Button(num: enButton, value: enButtonState): boolean {
 				
-         switch (pin) {
+         switch (num) {
             case enButton.B1: {
               pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
               if (pins.digitalReadPin(DigitalPin.P13) == value) {
