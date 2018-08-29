@@ -2,11 +2,11 @@
 Copyright (C): 2010-2019, Shenzhen Yahboom Tech
 modified from liusen
 load dependency
-"GHBit": "file:../pxt-ghbit"
+"ghbit": "file:../pxt-ghbit"
 */
 
 //% color="#006400" weight=20 icon="\uf1b9"
-namespace GHBit {
+namespace ghbit {
 
     const PCA9685_ADD = 0x41
     const MODE1 = 0x00
@@ -152,7 +152,7 @@ namespace GHBit {
      * @param index
      */   
 
-    //% blockId=GHBit_RGB_Program block="RGB_Program"
+    //% blockId=ghbit_RGB_Program block="RGB_Program"
     //% weight=99
     //% blockGap=10
     //% color="#006400"
@@ -165,7 +165,7 @@ namespace GHBit {
         return yahStrip;  
     }  
     
-    //% blockId=GHBit_Music_Handle block="Music_Handle|%index"
+    //% blockId=ghbit_Music_Handle block="Music_Handle|%index"
     //% weight=95
     //% blockGap=10
     //% color="#006400"
@@ -195,7 +195,7 @@ namespace GHBit {
         }
     }
     
-    //% blockId=GHBit_Servo_Handle block="Servo_Handle|num %num|value %value"
+    //% blockId=ghbit_Servo_Handle block="Servo_Handle|num %num|value %value"
     //% weight=94
     //% blockGap=10
     //% color="#006400"
@@ -210,7 +210,7 @@ namespace GHBit {
 
     }
         
-		//% blockId=GHBit_Ultrasonic_Handle block="ultrasonic return distance(cm)"
+		//% blockId=ghbit_Ultrasonic_Handle block="ultrasonic return distance(cm)"
     //% color="#006400"
     //% weight=88
     //% blockGap=10
