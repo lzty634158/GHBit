@@ -5,7 +5,7 @@ load dependency
 "GHBit": "file:../pxt-ghbit"
 */
 
-//% color="#C814B8" weight=20 icon="\uf11b"
+//% color="#006400" weight=20 icon="\uf11b"
 namespace GHBit {
 
     const PCA9685_ADD = 0x41
