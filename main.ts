@@ -371,7 +371,7 @@ namespace GHBit {
         }         
     }
     
-    //% blockId=GHBit_RGB_Colorful block="RGB_Colorful|num %numer"
+    //% blockId=GHBit_RGB_Colorful block="RGB_Colorful|num %num"
     //% weight=92
     //% blockGap=10
     //% color="#C814B8"
