@@ -308,7 +308,7 @@ namespace GHBit {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
     export function Button(pin: enButton, value: enButtonState): boolean {
 				
-				switch (pin) {
+         switch (pin) {
             case enButton.B1: {
               pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
               if (pins.digitalReadPin(DigitalPin.P13) == value) {
