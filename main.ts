@@ -68,7 +68,7 @@ namespace GHBit {
         OFF = 0,
         //% blockId="ON" block="开"
         ON
-		}
+    }
 			
 
     function i2cwrite(addr: number, reg: number, value: number) {
@@ -218,13 +218,13 @@ namespace GHBit {
     export function Min_Motor_Shake(value: Motorshock): void {
         switch (value) {
             case Motorshock.OFF: {
-              setPwm(0, 0, 4000);
+              setPwm(0, 0, 4095);
               break;
             }
             case Motorshock.ON: {
               setPwm(0, 0, 0);
               break;
-        		}
+            }
         }               
     }
 
