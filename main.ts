@@ -2,7 +2,7 @@
 Copyright (C): 2010-2019, Shenzhen Yahboom Tech
 modified from liusen
 load dependency
-"GHBit": "file:../pxt-GHBit"
+"GHBit": "file:../pxt-ghbit"
 */
 
 //% color="#006400" weight=20 icon="\uf1b9"
