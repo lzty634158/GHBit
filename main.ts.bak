@@ -277,48 +277,4 @@ namespace GHBit {
             }
         }               
     }
-    
-    //% blockId=GHBit_Rocker block="Rocker|value %value"
-    //% weight=94
-    //% blockGap=10
-    //% color="#C814B8"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
-    export function Rocker(value: enRocker): boolean {
-
-        pins.setPull(DigitalPin.P8, PinPullMode.PullUp);
-        let x = pins.analogReadPin(AnalogPin.P1);
-        let y = pins.analogReadPin(AnalogPin.P2);
-        let z = pins.digitalReadPin(DigitalPin.P8);
-        let now_state = enRocker.Nostate;
-
-        if (x < 100) // 上
-        {
-
-            now_state = enRocker.Up;
-
-        }
-        else if (x > 700) //下
-        {
-
-            now_state = enRocker.Down;
-        }
-        else  // 左右
-        {
-            if (y < 100) //右
-            {
-                now_state = enRocker.Right;
-            }
-            else if (y > 700) //左
-            {
-                now_state = enRocker.Left;
-            }
-        }
-        if (z == 0)
-            now_state = enRocker.Press;
-        if (now_state == value)
-            return true;
-        else
-            return false;
-
-    }
 }
