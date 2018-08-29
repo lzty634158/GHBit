@@ -1,0 +1,16 @@
+{
+
+  "HelloBot.Ultrasonic_Car|block": "超声波返回（cm）",
+  "HelloBot.RGB_Car_Program|block": "车身七彩流水灯",
+  "HelloBot.RGB_LArm_Program|block": "左手臂七彩流水灯",
+  "HelloBot.RGB_RArm_Program|block": "右手臂七彩流水灯",
+  "HelloBot.Touch_Sensor|block": "手臂触摸开关|%direct|位置 |%value| 触摸",
+  "HelloBot.RGB_Line_Program|block": "巡线七彩流水灯",
+  "HelloBot.Music_Car|block": "小车音乐播放|%index",
+  "HelloBot.Line_Sensor|block": "巡线传感器|位置 %direct|检测到 %value",
+  "HelloBot.Avoid_Sensor|block": "避障传感器|位置 %direct|检测到 %value",
+  "HelloBot.Servo_Car|block": "小车舵机|编号 %num|角度 %value",
+  "HelloBot.CarCtrl|block": "小车控制|%index",
+  "HelloBot.CarCtrlSpeed|block": "小车控制|%index|速度 %speed",
+  "HelloBot.CarCtrlSpeed2|block": "小车控制|%index|左电机速度 %speed1|右电机速度 %speed2"
+}

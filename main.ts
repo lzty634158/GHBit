@@ -2,11 +2,11 @@
 Copyright (C): 2010-2019, Shenzhen Yahboom Tech
 modified from liusen
 load dependency
-"GHBit": "file:../pxt-ghbit"
+"HelloBot": "file:../pxt-hellobot"
 */
 
 //% color="#006400" weight=20 icon="\uf1b9"
-namespace GHBit {
+namespace HelloBot {
 
     const PCA9685_ADD = 0x41
     const MODE1 = 0x00
@@ -29,7 +29,9 @@ namespace GHBit {
 
     let initialized = false
     let yahStrip: neopixel.Strip;
-    
+    let yahStripLArm: neopixel.Strip;
+    let yahStripRArm: neopixel.Strip;
+    let yahStripLine: neopixel.Strip;
 
     export enum enColor {
 
@@ -82,6 +84,27 @@ namespace GHBit {
         //% blockId="RightState" block="右边"
         RightState = 1
     }
+
+    export enum enLineState {
+        //% blockId="White" block="白线"
+        White = 1,
+        //% blockId="Black" block="黑线"
+        Black = 0
+    }
+    
+    export enum enTouchState {
+        //% blockId="Get" block="感受到"
+        Get = 0,
+        //% blockId="Black" block="未感受到"
+        NoGet = 1
+    }    
+    export enum enAvoidState {
+        //% blockId="OBSTACLE" block="有障碍物"
+        OBSTACLE = 1,
+        //% blockId="NOOBSTACLE" block="无障碍物"
+        NOOBSTACLE = 0
+
+    }
     
     export enum enServo {
         
@@ -89,6 +112,22 @@ namespace GHBit {
         S2,
         S3,
         S4
+    }
+    export enum CarState {
+        //% blockId="Car_Run" block="前行"
+        Car_Run = 1,
+        //% blockId="Car_Back" block="后退"
+        Car_Back = 2,
+        //% blockId="Car_Left" block="左转"
+        Car_Left = 3,
+        //% blockId="Car_Right" block="右转"
+        Car_Right = 4,
+        //% blockId="Car_Stop" block="停止"
+        Car_Stop = 5,
+        //% blockId="Car_SpinLeft" block="原地左旋"
+        Car_SpinLeft = 6,
+        //% blockId="Car_SpinRight" block="原地右旋"
+        Car_SpinRight = 7
     }
 
     function i2cwrite(addr: number, reg: number, value: number) {
@@ -147,30 +186,283 @@ namespace GHBit {
         pins.i2cWriteBuffer(PCA9685_ADD, buf);
     }
 
+    function Car_run(speed1: number, speed2: number) {
+
+        speed1 = speed1 * 16; // map 350 to 4096
+        speed2 = speed2 * 16;
+        if (speed1 >= 4096) {
+            speed1 = 4095
+        }
+        if (speed1 <= 350) {
+            speed1 = 350
+        }
+        if (speed2 >= 4096) {
+            speed2 = 4095
+        }
+        if (speed2 <= 350) {
+            speed2 = 350
+        }
+
+        setPwm(12, 0, speed1);
+        setPwm(13, 0, 0);
+
+        setPwm(15, 0, speed2);
+        setPwm(14, 0, 0);
+        //pins.digitalWritePin(DigitalPin.P16, 1);
+       // pins.analogWritePin(AnalogPin.P1, 1023-speed); //速度控制
+
+       // pins.analogWritePin(AnalogPin.P0, speed);//速度控制
+       // pins.digitalWritePin(DigitalPin.P8, 0);
+    }
+
+    function Car_back(speed1: number, speed2: number) {
+
+        speed1 = speed1 * 16; // map 350 to 4096
+        speed2 = speed2 * 16;
+        if (speed1 >= 4096) {
+            speed1 = 4095
+        }
+        if (speed1 <= 350) {
+            speed1 = 350
+        }
+        if (speed2 >= 4096) {
+            speed2 = 4095
+        }
+        if (speed2 <= 350) {
+            speed2 = 350
+        }
+
+        setPwm(12, 0, 0);
+        setPwm(13, 0, speed1);
+
+        setPwm(15, 0, 0);
+        setPwm(14, 0, speed2);
+
+        //pins.digitalWritePin(DigitalPin.P16, 0);
+        //pins.analogWritePin(AnalogPin.P1, speed); //速度控制
+
+        //pins.analogWritePin(AnalogPin.P0, 1023 - speed);//速度控制
+        //pins.digitalWritePin(DigitalPin.P8, 1);
+    }
+
+    function Car_left(speed1: number, speed2: number) {
+
+        speed1 = speed1 * 16; // map 350 to 4096
+        speed2 = speed2 * 16;
+        if (speed1 >= 4096) {
+            speed1 = 4095
+        }
+        if (speed1 <= 350) {
+            speed1 = 350
+        }
+        if (speed2 >= 4096) {
+            speed2 = 4095
+        }
+        if (speed2 <= 350) {
+            speed2 = 350
+        }
+        
+        setPwm(12, 0, 0);
+        setPwm(13, 0, 0);
+
+        setPwm(15, 0, speed2);
+        setPwm(14, 0, 0);
+
+        //pins.analogWritePin(AnalogPin.P0, speed);
+        //pins.digitalWritePin(DigitalPin.P8, 0);
+
+        //pins.digitalWritePin(DigitalPin.P16, 0);
+        //pins.digitalWritePin(DigitalPin.P1, 0);
+    }
+
+    function Car_right(speed1: number, speed2: number) {
+
+        speed1 = speed1 * 16; // map 350 to 4096
+        speed2 = speed2 * 16;
+        if (speed1 >= 4096) {
+            speed1 = 4095
+        }
+        if (speed1 <= 350) {
+            speed1 = 350
+        }
+        if (speed2 >= 4096) {
+            speed2 = 4095
+        }
+        if (speed2 <= 350) {
+            speed2 = 350
+        }
+        
+        setPwm(12, 0, speed1);
+        setPwm(13, 0, 0);
+
+        setPwm(15, 0, 0);
+        setPwm(14, 0, 0);
+        //pins.digitalWritePin(DigitalPin.P0, 0);
+        //pins.digitalWritePin(DigitalPin.P8, 0);
+
+        //pins.digitalWritePin(DigitalPin.P16, 1);
+       // pins.analogWritePin(AnalogPin.P1, 1023 - speed);
+    }
+
+    function Car_stop() {
+       
+        setPwm(12, 0, 0);
+        setPwm(13, 0, 0);
+
+        setPwm(15, 0, 0);
+        setPwm(14, 0, 0);
+        //pins.digitalWritePin(DigitalPin.P0, 0);
+        //pins.digitalWritePin(DigitalPin.P8, 0);
+        //pins.digitalWritePin(DigitalPin.P16, 0);
+        //pins.digitalWritePin(DigitalPin.P1, 0);
+    }
+
+    function Car_spinleft(speed1: number, speed2: number) {
+
+        speed1 = speed1 * 16; // map 350 to 4096
+        speed2 = speed2 * 16;
+        if (speed1 >= 4096) {
+            speed1 = 4095
+        }
+        if (speed1 <= 350) {
+            speed1 = 350
+        }
+        if (speed2 >= 4096) {
+            speed2 = 4095
+        }
+        if (speed2 <= 350) {
+            speed2 = 350
+        }        
+        
+        setPwm(12, 0, 0);
+        setPwm(13, 0, speed1);
+
+        setPwm(15, 0, speed2);
+        setPwm(14, 0, 0);
+
+        //pins.analogWritePin(AnalogPin.P0, speed);
+        //pins.digitalWritePin(DigitalPin.P8, 0);
+
+        //pins.digitalWritePin(DigitalPin.P16, 0);
+        //pins.analogWritePin(AnalogPin.P1, speed);
+    } 
+
+    function Car_spinright(speed1: number, speed2: number) {
+
+        speed1 = speed1 * 16; // map 350 to 4096
+        speed2 = speed2 * 16;
+        if (speed1 >= 4096) {
+            speed1 = 4095
+        }
+        if (speed1 <= 350) {
+            speed1 = 350
+        }
+        if (speed2 >= 4096) {
+            speed2 = 4095
+        }
+        if (speed2 <= 350) {
+            speed2 = 350
+        }    
+            
+        setPwm(12, 0, speed1);
+        setPwm(13, 0, 0);
+
+        setPwm(15, 0, 0);
+        setPwm(14, 0, speed2);
+        //pins.analogWritePin(AnalogPin.P0, 1023-speed);
+        //pins.digitalWritePin(DigitalPin.P8, 1);
+
+        //pins.digitalWritePin(DigitalPin.P16, 1);
+        //pins.analogWritePin(AnalogPin.P1, 1023-speed);
+
+    }
+
     /**
      * *****************************************************************
      * @param index
      */   
 
-    //% blockId=GHBit_RGB_Program block="RGB_Program"
+    //% blockId=HelloBot_RGB_Car_Program block="RGB_Car_Program"
     //% weight=99
     //% blockGap=10
     //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function RGB_Program(): neopixel.Strip {
+    export function RGB_Car_Program(): neopixel.Strip {
          
         if (!yahStrip) {
-            yahStrip = neopixel.create(DigitalPin.P4, 4, NeoPixelMode.RGB);
+            yahStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB);
         }
         return yahStrip;  
     }  
     
-    //% blockId=GHBit_Music_Handle block="Music_Handle|%index"
+    //% blockId=HelloBot_RGB_LArm_Program block="RGB_LArm_Program"
     //% weight=98
     //% blockGap=10
     //% color="#006400"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function Music_Handle(index: enMusic): void {
+    export function RGB_LArm_Program(): neopixel.Strip {
+         
+        if (!yahStripLArm) {
+            yahStripLArm = neopixel.create(DigitalPin.P6, 1, NeoPixelMode.RGB);
+        }
+        return yahStripLArm;  
+    } 
+    
+    //% blockId=HelloBot_RGB_RArm_Program block="RGB_RArm_Program"
+		//% weight=97
+		//% blockGap=10
+		//% color="#006400"
+		//% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function RGB_RArm_Program(): neopixel.Strip {
+         
+        if (!yahStripRArm) {
+            yahStripRArm = neopixel.create(DigitalPin.P9, 1, NeoPixelMode.RGB);
+        }
+        return yahStripRArm;  
+    }
+    
+    //% blockId=HelloBot_Touch_Sensor block="Touch_Sensor|%direct |direct |%value| value"
+    //% weight=96
+    //% blockGap=10
+    //% color="#006400"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
+    export function Touch_Sensor(direct: enPos, value: enTouchState): boolean {
+
+        let temp: boolean = false;
+        pins.setPull(DigitalPin.P7, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P10, PinPullMode.PullUp);
+        switch (direct) {
+            case enPos.LeftState: {
+            
+                if (pins.digitalReadPin(DigitalPin.P7) == value) {
+                    temp = true
+                }
+                else {
+                    temp = false
+                }
+                break;
+            }
+
+            case enPos.RightState: {
+                if (pins.digitalReadPin(DigitalPin.P10) == value) {                   
+                    temp = true;
+                }
+                else {
+                    temp = false
+                }
+                break;
+            }
+        }
+        return temp;
+
+    }
+    
+    //% blockId=HelloBot_Music_Car block="Music_Car|%index"
+    //% weight=95
+    //% blockGap=10
+    //% color="#006400"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Music_Car(index: enMusic): void {
         switch (index) {
             case enMusic.dadadum: music.beginMelody(music.builtInMelody(Melodies.Dadadadum), MelodyOptions.Once); break;
             case enMusic.birthday: music.beginMelody(music.builtInMelody(Melodies.Birthday), MelodyOptions.Once); break;
@@ -195,39 +487,176 @@ namespace GHBit {
         }
     }
     
-    //% blockId=GHBit_Servo_Handle block="Servo_Handle|num %num|value %value"
-    //% weight=97
+    //% blockId=HelloBot_Servo_Car block="Servo_Car|num %num|value %value"
+    //% weight=94
     //% blockGap=10
     //% color="#006400"
     //% num.min=1 num.max=4 value.min=0 value.max=180
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
-    export function Servo_Handle(num: enServo, value: number): void {
+    export function Servo_Car(num: enServo, value: number): void {
 
         // 50hz: 20,000 us
         let us = (value * 1800 / 180 + 600); // 0.6 ~ 2.4
         let pwm = us * 4096 / 20000;
-        setPwm(num + 8, 0, pwm);
+        setPwm(num + 2, 0, pwm);
+
+    }
+    
+    //% blockId=HelloBot_CarCtrl block="CarCtrl|%index"
+    //% weight=93
+    //% blockGap=10
+    //% color="#006400"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=10
+    export function CarCtrl(index: CarState): void {
+        switch (index) {
+            case CarState.Car_Run: Car_run(255, 255); break;
+            case CarState.Car_Back: Car_back(255, 255); break;
+            case CarState.Car_Left: Car_left(255, 255); break;
+            case CarState.Car_Right: Car_right(255, 255); break;
+            case CarState.Car_Stop: Car_stop(); break;
+            case CarState.Car_SpinLeft: Car_spinleft(255, 255); break;
+            case CarState.Car_SpinRight: Car_spinright(255, 255); break;
+        }
+    }
+    
+    //% blockId=HelloBot_CarCtrlSpeed block="CarCtrlSpeed|%index|speed %speed"
+    //% weight=92
+    //% blockGap=10
+    //% speed.min=0 speed.max=255
+    //% color="#006400"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=10
+    export function CarCtrlSpeed(index: CarState, speed: number): void {
+        switch (index) {
+            case CarState.Car_Run: Car_run(speed, speed); break;
+            case CarState.Car_Back: Car_back(speed, speed); break;
+            case CarState.Car_Left: Car_left(speed, speed); break;
+            case CarState.Car_Right: Car_right(speed, speed); break;
+            case CarState.Car_Stop: Car_stop(); break;
+            case CarState.Car_SpinLeft: Car_spinleft(speed, speed); break;
+            case CarState.Car_SpinRight: Car_spinright(speed, speed); break;
+        }
+    }
+    
+    //% blockId=HelloBot_CarCtrlSpeed2 block="CarCtrlSpeed2|%index|speed1 %speed1|speed2 %speed2"
+    //% weight=91
+    //% blockGap=10
+    //% speed1.min=0 speed1.max=255 speed2.min=0 speed2.max=255
+    //% color="#006400"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=10
+    export function CarCtrlSpeed2(index: CarState, speed1: number, speed2: number): void {
+        switch (index) {
+            case CarState.Car_Run: Car_run(speed1, speed2); break;
+            case CarState.Car_Back: Car_back(speed1, speed2); break;
+            case CarState.Car_Left: Car_left(speed1, speed2); break;
+            case CarState.Car_Right: Car_right(speed1, speed2); break;
+            case CarState.Car_Stop: Car_stop(); break;
+            case CarState.Car_SpinLeft: Car_spinleft(speed1, speed2); break;
+            case CarState.Car_SpinRight: Car_spinright(speed1, speed2); break;
+        }
+    }    
+        
+    //% blockId=HelloBot_RGB_Line_Program block="RGB_Line_Program"
+    //% weight=90
+    //% blockGap=10
+    //% color="#006400"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function RGB_Line_Program(): neopixel.Strip {
+         
+        if (!yahStripLine) {
+            yahStripLine = neopixel.create(DigitalPin.P5, 4, NeoPixelMode.RGB);
+        }
+        return yahStripLine;  
+    }  
+    
+    //% blockId=HelloBot_Line_Sensor block="Line_Sensor|direct %direct|value %value"
+    //% weight=89
+    //% blockGap=10
+    //% color="#006400"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
+    export function Line_Sensor(direct: enPos, value: enLineState): boolean {
+
+        let temp: boolean = false;
+				pins.setPull(DigitalPin.P1, PinPullMode.PullUp);
+				pins.setPull(DigitalPin.P2, PinPullMode.PullUp);
+        switch (direct) {
+            case enPos.LeftState: {
+                if (pins.digitalReadPin(DigitalPin.P1) == value) {              
+                    temp = true;                  
+                }
+                else {                  
+                     temp = false;
+                }
+                break;
+            }
+
+            case enPos.RightState: {
+                if (pins.digitalReadPin(DigitalPin.P2) == value) {              
+                    temp = true;                  
+                }
+                else {
+                    temp = false;
+                }
+                break;
+            }
+        }
+        return temp;
 
     }
         
-    //% blockId=GHBit_ultrasonic_Handle block="ultrasonic return distance(cm)"
+		//% blockId=HelloBot_ultrasonic_car block="ultrasonic return distance(cm)"
     //% color="#006400"
-    //% weight=96
+    //% weight=88
     //% blockGap=10
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function Ultrasonic_Handle(): number {
+    export function Ultrasonic_Car(): number {
 
         // send pulse
-        pins.setPull(DigitalPin.P12, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P12, 0);
+        pins.setPull(DigitalPin.P14, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P14, 0);
         control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P12, 1);
+        pins.digitalWritePin(DigitalPin.P14, 1);
         control.waitMicros(15);
-        pins.digitalWritePin(DigitalPin.P12, 0);
+        pins.digitalWritePin(DigitalPin.P14, 0);
 
         // read pulse
-        let d = pins.pulseIn(DigitalPin.P11, PulseValue.High, 43200);
+        let d = pins.pulseIn(DigitalPin.P15, PulseValue.High, 43200);
         return d / 58;
     }
+
+    //% blockId=HelloBot_Avoid_Sensor block="Avoid_Sensor|direct %direct|value %value"
+    //% weight=87
+    //% blockGap=10
+    //% color="#006400"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
+    export function Avoid_Sensor(direct: enPos, value: enAvoidState): boolean {
+
+        let temp: boolean = false;
+        pins.setPull(DigitalPin.P3, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P4, PinPullMode.PullUp);
+        switch (direct) {
+            case enPos.LeftState: {
+                if (pins.digitalReadPin(DigitalPin.P3) == value) {              
+                    temp = true;                  
+                }
+                else{
+                    temp = false;
+                }
+                break;
+            }
+
+            case enPos.RightState: {
+                if (pins.digitalReadPin(DigitalPin.P4) == value) {              
+                     temp = true;                  
+                }
+                else{
+                     temp = false;
+                }
+                break;
+            }
+        }
+        return temp;
+
+    }
+
 
 }
