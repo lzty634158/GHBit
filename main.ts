@@ -102,22 +102,22 @@ namespace GHBit {
     
      export enum enColor {
 
-        //% blockId="OFF" block="灭"
+        //% blockId="OFF" block="熄灭"
         OFF = 0,
-        //% blockId="Red" block="红色"
-        Red,
-        //% blockId="Green" block="绿色"
-        Green,
-        //% blockId="Blue" block="蓝色"
-        Blue,
-        //% blockId="White" block="白色"
-        White,
-        //% blockId="Cyan" block="青色"
-        Cyan,
-        //% blockId="Pinkish" block="品红"
-        Pinkish,
-        //% blockId="Yellow" block="黄色"
-        Yellow
+        //% blockId="RED" block="红色"
+        RED,
+        //% blockId="GREEN" block="绿色"
+        GREEN,
+        //% blockId="BLUE" block="蓝色"
+        BLUE,
+        //% blockId="WHITE" block="白色"
+        WHITE,
+        //% blockId="CYAN" block="青色"
+        CYAN,
+        //% blockId="PINKISH" block="品红"
+        PINKISH,
+        //% blockId="YELLOW" block="黄色"
+        YELLOW
 
     }
     
@@ -377,9 +377,9 @@ namespace GHBit {
     //% weight=92
     //% blockGap=10
     //% color="#C814B8"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=8
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function RGB_Colorful(value: enColor): void {
-
+         
         switch (value) {
             case enColor.OFF: {
                 setPwm(15, 0, 0);
@@ -387,43 +387,43 @@ namespace GHBit {
                 setPwm(13, 0, 0);
                 break;
             }
-            case enColor.Red: {
+            case enColor.RED: {
                 setPwm(15, 0, 4095);
                 setPwm(14, 0, 0);
                 setPwm(13, 0, 0);
                 break;
             }
-            case enColor.Green: {
+            case enColor.GREEN: {
                 setPwm(15, 0, 0);
                 setPwm(14, 0, 4095);
                 setPwm(13, 0, 0);
                 break;
             }
-            case enColor.Blue: {
+            case enColor.BLUE: {
                 setPwm(15, 0, 0);
                 setPwm(14, 0, 0);
                 setPwm(13, 0, 4095);
                 break;
             }
-            case enColor.White: {
+            case enColor.WHITE: {
                 setPwm(15, 0, 4095);
                 setPwm(14, 0, 4095);
                 setPwm(13, 0, 4095);
                 break;
             }
-            case enColor.Cyan: {
+            case enColor.CYAN: {
                 setPwm(15, 0, 0);
                 setPwm(14, 0, 4095);
                 setPwm(13, 0, 4095);
                 break;
             }
-            case enColor.Pinkish: {
+            case enColor.PINKISH: {
                 setPwm(15, 0, 4095);
                 setPwm(14, 0, 0);
                 setPwm(13, 0, 4095);
                 break;
             }
-            case enColor.Yellow: {
+            case enColor.YELLOW: {
                 setPwm(15, 0, 4095);
                 setPwm(14, 0, 4095);
                 setPwm(13, 0, 0);
