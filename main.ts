@@ -382,51 +382,51 @@ namespace GHBit {
 
         switch (value) {
             case enColor.OFF: {
-                setPwm(0, 0, 0);
-                setPwm(1, 0, 0);
-                setPwm(2, 0, 0);
+                setPwm(15, 0, 0);
+                setPwm(14, 0, 0);
+                setPwm(13, 0, 0);
                 break;
             }
             case enColor.Red: {
-                setPwm(0, 0, 4095);
-                setPwm(1, 0, 0);
-                setPwm(2, 0, 0);
+                setPwm(15, 0, 4095);
+                setPwm(14, 0, 0);
+                setPwm(13, 0, 0);
                 break;
             }
             case enColor.Green: {
-                setPwm(0, 0, 0);
-                setPwm(1, 0, 4095);
-                setPwm(2, 0, 0);
+                setPwm(15, 0, 0);
+                setPwm(14, 0, 4095);
+                setPwm(13, 0, 0);
                 break;
             }
             case enColor.Blue: {
-                setPwm(0, 0, 0);
-                setPwm(1, 0, 0);
-                setPwm(2, 0, 4095);
+                setPwm(15, 0, 0);
+                setPwm(14, 0, 0);
+                setPwm(13, 0, 4095);
                 break;
             }
             case enColor.White: {
-                setPwm(0, 0, 4095);
-                setPwm(1, 0, 4095);
-                setPwm(2, 0, 4095);
+                setPwm(15, 0, 4095);
+                setPwm(14, 0, 4095);
+                setPwm(13, 0, 4095);
                 break;
             }
             case enColor.Cyan: {
-                setPwm(0, 0, 0);
-                setPwm(1, 0, 4095);
-                setPwm(2, 0, 4095);
+                setPwm(15, 0, 0);
+                setPwm(14, 0, 4095);
+                setPwm(13, 0, 4095);
                 break;
             }
             case enColor.Pinkish: {
-                setPwm(0, 0, 4095);
-                setPwm(1, 0, 0);
-                setPwm(2, 0, 4095);
+                setPwm(15, 0, 4095);
+                setPwm(14, 0, 0);
+                setPwm(13, 0, 4095);
                 break;
             }
             case enColor.Yellow: {
-                setPwm(0, 0, 4095);
-                setPwm(1, 0, 4095);
-                setPwm(2, 0, 0);
+                setPwm(15, 0, 4095);
+                setPwm(14, 0, 4095);
+                setPwm(13, 0, 0);
                 break;
             }
         }
