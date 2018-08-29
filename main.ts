@@ -69,8 +69,37 @@ namespace GHBit {
         //% blockId="ON" block="开"
         ON
     }
-			
-
+    
+    export enum enRocker {
+        //% blockId="Nostate" block="无"
+        Nostate = 0,
+        //% blockId="Up" block="上"
+        Up,
+        //% blockId="Down" block="下"
+        Down,
+        //% blockId="Left" block="左"
+        Left,
+        //% blockId="Right" block="右"
+        Right,
+        //% blockId="Press" block="按下"
+        Press
+    }
+    
+    export enum enButtonState {
+        //% blockId="Press" block="按下"
+        Press = 0,
+        //% blockId="Realse" block="松开"
+        Realse = 1
+    }
+    
+    export enum enButton {
+        
+        B1 = 0,
+        B2,
+        B3,
+        B4
+    }
+    
     function i2cwrite(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
         buf[0] = reg
@@ -227,5 +256,100 @@ namespace GHBit {
             }
         }               
     }
+    
+    //% blockId=GHBit_Rocker block="Rocker|value %value"
+    //% weight=94
+    //% blockGap=10
+    //% color="#808080"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
+    export function Rocker(value: enRocker): boolean {
+
+        pins.setPull(pin3, PinPullMode.PullUp);
+        let x = pins.analogReadPin(AnalogPin.P1);
+        let y = pins.analogReadPin(AnalogPin.P2);
+        let z = pins.digitalReadPin(DigitalPin.P8);
+        let now_state = enRocker.Nostate;
+
+        if (x < 100) // 上
+        {
+
+            now_state = enRocker.Up;
+
+        }
+        else if (x > 700) //下
+        {
+
+            now_state = enRocker.Down;
+        }
+        else  // 左右
+        {
+            if (y < 100) //右
+            {
+                now_state = enRocker.Right;
+            }
+            else if (y > 700) //左
+            {
+                now_state = enRocker.Left;
+            }
+        }
+        if (z == 0)
+            now_state = enRocker.Press;
+        if (now_state == value)
+            return true;
+        else
+            return false;
+
+    }
+    
+    //% blockId=GHBit_Button block="Button|pin %pin|value %value"
+    //% weight=100
+    //% blockGap=10
+    //% color="#808080"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
+    export function Button(pin: enButton, value: enButtonState): boolean {
+				
+				switch (pin) {
+            case enButton.B1: {
+              pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P13) == value) {
+                return true;
+              }
+              else {
+                return false;
+              }
+              break;
+            }
+            case enButton.B2: {
+              pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P14) == value) {
+                return true;
+              }
+              else {
+                return false;
+              }
+              break;
+            }
+            case enButton.B3: {
+              pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P15) == value) {
+                return true;
+              }
+              else {
+                return false;
+              }
+              break;
+            }
+            case enButton.B4: {
+              pins.setPull(DigitalPin.P16, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P16) == value) {
+                return true;
+              }
+              else {
+                return false;
+              }
+              break;
+            }
+        }         
+    }  
 
 }
