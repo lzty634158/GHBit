@@ -198,7 +198,7 @@ namespace GHBit {
     //% blockId=GHBit_Music_Handle block="Music_Handle|%index"
     //% weight=98
     //% blockGap=10
-    //% color="#006400"
+    //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Music_Handle(index: enMusic): void {
         switch (index) {
@@ -241,7 +241,7 @@ namespace GHBit {
     }
         
     //% blockId=GHBit_ultrasonic_Handle block="ultrasonic return distance(cm)"
-    //% color="#006400"
+    //% color="#C814B8"
     //% weight=96
     //% blockGap=10
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -281,7 +281,7 @@ namespace GHBit {
     //% blockId=GHBit_Rocker block="Rocker|value %value"
     //% weight=94
     //% blockGap=10
-    //% color="#808080"
+    //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
     export function Rocker(value: enRocker): boolean {
 
@@ -325,7 +325,7 @@ namespace GHBit {
     //% blockId=GHBit_Button block="Button|num %num|value %value"
     //% weight=93
     //% blockGap=10
-    //% color="#808080"
+    //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
     export function Button(num: enButton, value: enButtonState): boolean {
 				
