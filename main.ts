@@ -224,4 +224,39 @@ namespace GHBit {
             case enMusic.power_down: music.beginMelody(music.builtInMelody(Melodies.PowerDown), MelodyOptions.Once); break;
         }
     }
+    
+    //% blockId=GHBit_Servo_Handle block="Servo_Handle|num %num|value %value"
+    //% weight=97
+    //% blockGap=10
+    //% color="#006400"
+    //% num.min=1 num.max=4 value.min=0 value.max=180
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=9
+    export function Servo_Handle(num: enServo, value: number): void {
+
+        // 50hz: 20,000 us
+        let us = (value * 1800 / 180 + 600); // 0.6 ~ 2.4
+        let pwm = us * 4096 / 20000;
+        setPwm(num + 8, 0, pwm);
+
+    }
+        
+    //% blockId=GHBit_ultrasonic_Handle block="ultrasonic return distance(cm)"
+    //% color="#C814B8"
+    //% weight=96
+    //% blockGap=10
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Ultrasonic_Handle(): number {
+
+        // send pulse
+        pins.setPull(DigitalPin.P12, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P12, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(DigitalPin.P12, 1);
+        control.waitMicros(15);
+        pins.digitalWritePin(DigitalPin.P12, 0);
+
+        // read pulse
+        let d = pins.pulseIn(DigitalPin.P11, PulseValue.High, 43200);
+        return d / 58;
+    }
 }
