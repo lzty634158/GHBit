@@ -377,7 +377,7 @@ namespace GHBit {
     //% weight=92
     //% blockGap=10
     //% color="#C814B8"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=8
     export function RGB_Colorful(value: enColor): void {
 
         switch (value) {
