@@ -1,19 +1,16 @@
 {
-    "name": "HelloBot",
+    "name": "GHBit",
     "version": "1.0.0",
     "description": "Extension for YahBoom GHBit",
     "license": "MIT",
     "dependencies": {
         "core": "*",
-        "neopixel": "github:microsoft/pxt-neopixel#v0.3.10",
-        "Mbit_IR":  "github:lzty634158/yahboom_mbit_IR"
-	
-
+        "neopixel": "github:microsoft/pxt-neopixel#v0.3.10"
     },
     "files": [
         "README.md",
         "main.ts",
-        "_locales/zh/HelloBot-strings.json"
+        "_locales/zh/ghbit-strings.json"
 
     ],
     "testFiles": [
