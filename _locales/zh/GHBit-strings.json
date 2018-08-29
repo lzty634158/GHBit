@@ -1,6 +1,6 @@
 {
 
-  "GHBit.RGB_Program|block": "手柄七彩流水灯"
-  
+  "GHBit.RGB_Program|block": "手柄七彩流水灯",
+  "GHBit.Music_Handle|block": "手柄音乐播放|%index"
 
 }
