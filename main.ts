@@ -321,4 +321,114 @@ namespace GHBit {
             return false;
 
     }
+    
+    //% blockId=GHBit_Button block="Button|num %num|value %value"
+    //% weight=93
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
+    export function Button(num: enButton, value: enButtonState): boolean {
+				
+         switch (num) {
+            case enButton.B1: {
+              pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P13) == value) {
+                return true;
+              }
+              else {
+                return false;
+              }
+              break;
+            }
+            case enButton.B2: {
+              pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P14) == value) {
+                return true;
+              }
+              else {
+                return false;
+              }
+              break;
+            }
+            case enButton.B3: {
+              pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P15) == value) {
+                return true;
+              }
+              else {
+                return false;
+              }
+              break;
+            }
+            case enButton.B4: {
+              pins.setPull(DigitalPin.P16, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P16) == value) {
+                return true;
+              }
+              else {
+                return false;
+              }
+              break;
+            }
+        }         
+    }
+    
+    //% blockId=GHBit_RGB_Colorful block="RGB_Colorful|value %value"
+    //% weight=92
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function RGB_Colorful(value: enColor): void {
+
+        switch (value) {
+            case enColor.OFF: {
+                setPwm(15, 0, 0);
+                setPwm(14, 0, 0);
+                setPwm(13, 0, 0);
+                break;
+            }
+            case enColor.Red: {
+                setPwm(15, 0, 4095);
+                setPwm(14, 0, 0);
+                setPwm(13, 0, 0);
+                break;
+            }
+            case enColor.Green: {
+                setPwm(15, 0, 0);
+                setPwm(14, 0, 4095);
+                setPwm(13, 0, 0);
+                break;
+            }
+            case enColor.Blue: {
+                setPwm(15, 0, 0);
+                setPwm(14, 0, 0);
+                setPwm(13, 0, 4095);
+                break;
+            }
+            case enColor.White: {
+                setPwm(15, 0, 4095);
+                setPwm(14, 0, 4095);
+                setPwm(13, 0, 4095);
+                break;
+            }
+            case enColor.Cyan: {
+                setPwm(15, 0, 0);
+                setPwm(14, 0, 4095);
+                setPwm(13, 0, 4095);
+                break;
+            }
+            case enColor.Pinkish: {
+                setPwm(15, 0, 4095);
+                setPwm(14, 0, 0);
+                setPwm(13, 0, 4095);
+                break;
+            }
+            case enColor.Yellow: {
+                setPwm(15, 0, 4095);
+                setPwm(14, 0, 4095);
+                setPwm(13, 0, 0);
+                break;
+            }
+        }
+    }    
 }
