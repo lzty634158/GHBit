@@ -30,27 +30,6 @@ namespace GHBit {
     let initialized = false
     let yahStrip: neopixel.Strip;
     
-
-    export enum enColor {
-
-        //% blockId="OFF" block="灭"
-        OFF = 0,
-        //% blockId="Red" block="红色"
-        Red,
-        //% blockId="Green" block="绿色"
-        Green,
-        //% blockId="Blue" block="蓝色"
-        Blue,
-        //% blockId="White" block="白色"
-        White,
-        //% blockId="Cyan" block="青色"
-        Cyan,
-        //% blockId="Pinkish" block="品红"
-        Pinkish,
-        //% blockId="Yellow" block="黄色"
-        Yellow,
-
-    }
     export enum enMusic {
 
         dadadum = 0,
@@ -74,13 +53,6 @@ namespace GHBit {
         jump_down,
         power_up,
         power_down
-    }
-    export enum enPos {
-
-        //% blockId="LeftState" block="左边"
-        LeftState = 0,
-        //% blockId="RightState" block="右边"
-        RightState = 1
     }
     
     export enum enServo {
