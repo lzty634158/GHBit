@@ -326,49 +326,50 @@ namespace GHBit {
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
     export function Button(num: enButton, value: enButtonState): boolean {
-				
+         var temp : boolean = false;
          switch (num) {
             case enButton.B1: {
               pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
               if (pins.digitalReadPin(DigitalPin.P13) == value) {
-                return true;
+                temp = true;
               }
               else {
-                return false;
+                temp = false;
               }
               break;
             }
             case enButton.B2: {
               pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
               if (pins.digitalReadPin(DigitalPin.P14) == value) {
-                return true;
+                temp = true;
               }
               else {
-                return false;
+                temp = false;
               }
               break;
             }
             case enButton.B3: {
               pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
               if (pins.digitalReadPin(DigitalPin.P15) == value) {
-                return true;
+                temp = true;
               }
               else {
-                return false;
+                temp = false;
               }
               break;
             }
             case enButton.B4: {
               pins.setPull(DigitalPin.P16, PinPullMode.PullUp);
               if (pins.digitalReadPin(DigitalPin.P16) == value) {
-                return true;
+                temp = true;
               }
               else {
-                return false;
+                temp = false;
               }
               break;
             }
-        }         
+        }
+        return temp;         
     }
     
     //% blockId=GHBit_RGB_Colorful block="RGB_Colorful|%index"
