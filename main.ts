@@ -371,14 +371,14 @@ namespace GHBit {
         }         
     }
     
-    //% blockId=GHBit_RGB_Colorful block="RGB_Colorful|num %num"
+    //% blockId=GHBit_RGB_Colorful block="RGB_Colorful|%index"
     //% weight=92
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function RGB_Colorful(num: enColor): void {
+    export function RGB_Colorful(index: enColor): void {
          
-        switch (num) {
+        switch (index) {
             case enColor.OFF: {
               setPwm(15, 0, 0);
               setPwm(14, 0, 0);
