@@ -7,6 +7,6 @@
   "GHBit.Min_Motor_Shake|block": "手柄遥控器|震动 %value",
   "GHBit.Rocker|block": "手柄遥杆|返回 %value",
   "GHBit.Button|block": "手柄按键|选择 %num|返回 %value",
-  "GHBit.RGB_Colorful|block": "手柄RGB探照灯|%index"
+  "GHBit.RGB_Colorful|block": "手柄RGB探照灯| %value"
 
 }
