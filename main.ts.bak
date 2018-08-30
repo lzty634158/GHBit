@@ -378,6 +378,7 @@ namespace GHBit {
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function RGB_Colorful(index: enColor): void {
+         
         switch (index) {
             case enColor.OFF: {
               setPwm(15, 0, 0);
