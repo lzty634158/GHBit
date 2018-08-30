@@ -8,26 +8,26 @@ load dependency
 //% color="#C814B8" weight=20 icon="\uf11b"
 namespace GHBit {
 
-    const PCA9685_ADD = 0x41
-    const MODE1 = 0x00
-    const MODE2 = 0x01
-    const SUBADR1 = 0x02
-    const SUBADR2 = 0x03
-    const SUBADR3 = 0x04
+    const PCA9685_ADD = 0x41;
+    const MODE1 = 0x00;
+    const MODE2 = 0x01;
+    const SUBADR1 = 0x02;
+    const SUBADR2 = 0x03;
+    const SUBADR3 = 0x04;
 
-    const LED0_ON_L = 0x06
-    const LED0_ON_H = 0x07
-    const LED0_OFF_L = 0x08
-    const LED0_OFF_H = 0x09
+    const LED0_ON_L = 0x06;
+    const LED0_ON_H = 0x07;
+    const LED0_OFF_L = 0x08;
+    const LED0_OFF_H = 0x09;
 
-    const ALL_LED_ON_L = 0xFA
-    const ALL_LED_ON_H = 0xFB
-    const ALL_LED_OFF_L = 0xFC
-    const ALL_LED_OFF_H = 0xFD
+    const ALL_LED_ON_L = 0xFA;
+    const ALL_LED_ON_H = 0xFB;
+    const ALL_LED_OFF_L = 0xFC;
+    const ALL_LED_OFF_H = 0xFD;
 
-    const PRESCALE = 0xFE
+    const PRESCALE = 0xFE;
 
-    let initialized = false
+    let initialized = false;
     let yahStrip: neopixel.Strip;
     
     export enum enMusic {
@@ -120,16 +120,16 @@ namespace GHBit {
     }
     
     function i2cwrite(addr: number, reg: number, value: number) {
-        let buf = pins.createBuffer(2)
-        buf[0] = reg
-        buf[1] = value
-        pins.i2cWriteBuffer(addr, buf)
+        let buf = pins.createBuffer(2);
+        buf[0] = reg;
+        buf[1] = value;
+        pins.i2cWriteBuffer(addr, buf);
     }
 
     function i2ccmd(addr: number, value: number) {
-        let buf = pins.createBuffer(1)
-        buf[0] = value
-        pins.i2cWriteBuffer(addr, buf)
+        let buf = pins.createBuffer(1);
+        buf[0] = value;
+        pins.i2cWriteBuffer(addr, buf);
     }
 
     function i2cread(addr: number, reg: number) {
@@ -139,9 +139,9 @@ namespace GHBit {
     }
 
     function initPCA9685(): void {
-        i2cwrite(PCA9685_ADD, MODE1, 0x00)
+        i2cwrite(PCA9685_ADD, MODE1, 0x00);
         setFreq(50);
-        initialized = true
+        initialized = true;
     }
 
     function setFreq(freq: number): void {
