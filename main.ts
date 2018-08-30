@@ -320,61 +320,57 @@ namespace GHBit {
 
     }
     
-    //% blockId=GHBit_RGB_Colorful block="RGB_Colorful|%index"
-    //% weight=92
+    //% blockId=GHBit_Button block="Button|num %num|value %value"
+    //% weight=93
     //% blockGap=10
     //% color="#C814B8"
-    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
-    export function RGB_Colorful(index: enColor): void {
-        switch (index) {
-            case enColor.OFF: {
-              setPwm(15, 0, 0);
-              setPwm(14, 0, 0);
-              setPwm(13, 0, 0);
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
+    export function Button(num: enButton, value: enButtonState): boolean {
+         var temp : boolean = false;
+         switch (num) {
+            case enButton.B1: {
+              pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P13) == value) {
+                temp = true;
+              }
+              else {
+                temp = false;
+              }
               break;
             }
-            case enColor.RED: {
-              setPwm(15, 0, 4095);
-              setPwm(14, 0, 0);
-              setPwm(13, 0, 0);
+            case enButton.B2: {
+              pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P14) == value) {
+                temp = true;
+              }
+              else {
+                temp = false;
+              }
               break;
             }
-            case enColor.GREEN: {
-              setPwm(15, 0, 0);
-              setPwm(14, 0, 4095);
-              setPwm(13, 0, 0);
+            case enButton.B3: {
+              pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P15) == value) {
+                temp = true;
+              }
+              else {
+                temp = false;
+              }
               break;
             }
-            case enColor.BLUE: {
-              setPwm(15, 0, 0);
-              setPwm(14, 0, 0);
-              setPwm(13, 0, 4095);
-              break;
-            }
-            case enColor.WHITE: {
-              setPwm(15, 0, 4095);
-              setPwm(14, 0, 4095);
-              setPwm(13, 0, 4095);
-              break;
-            }
-            case enColor.CYAN: {
-              setPwm(15, 0, 0);
-              setPwm(14, 0, 4095);
-              setPwm(13, 0, 4095);
-              break;
-            }
-            case enColor.PINKISH: {
-              setPwm(15, 0, 4095);
-              setPwm(14, 0, 0);
-              setPwm(13, 0, 4095);
-              break;
-            }
-            case enColor.YELLOW: {
-              setPwm(15, 0, 4095);
-              setPwm(14, 0, 4095);
-              setPwm(13, 0, 0);
+            case enButton.B4: {
+              pins.setPull(DigitalPin.P16, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P16) == value) {
+                temp = true;
+              }
+              else {
+                temp = false;
+              }
               break;
             }
         }
+        return temp;         
     }
+    
+    
 }
