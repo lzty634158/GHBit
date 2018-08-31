@@ -319,4 +319,55 @@ namespace GHBit {
             return false;
 
     }
+    //% blockId=GHBit_Button block="Button|num %num|value %value"
+    //% weight=93
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
+    export function Button(num: enButton, value: enButtonState): boolean {
+         let temp = false;
+         switch (num) {
+            case enButton.B1: {
+              pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P13) == value) {
+                temp = true;
+              }
+              else {
+                temp = false;
+              }
+              break;
+            }
+            case enButton.B2: {
+              pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P14) == value) {
+                temp = true;
+              }
+              else {
+                temp = false;
+              }
+              break;
+            }
+            case enButton.B3: {
+              pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P15) == value) {
+                temp = true;
+              }
+              else {
+                temp = false;
+              }
+              break;
+            }
+            case enButton.B4: {
+              pins.setPull(DigitalPin.P16, PinPullMode.PullUp);
+              if (pins.digitalReadPin(DigitalPin.P16) == value) {
+                temp = true;
+              }
+              else {
+                temp = false;
+              }
+              break;
+            }
+        }
+        return temp;         
+    }
 }
