@@ -326,7 +326,7 @@ namespace GHBit {
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
     export function Button(num: enButton, value: enButtonState): boolean {
-         var temp : boolean = false;
+         let temp = false;
          switch (num) {
             case enButton.B1: {
               pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
