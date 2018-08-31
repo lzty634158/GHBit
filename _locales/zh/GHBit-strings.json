@@ -1,12 +1,9 @@
-﻿{
+{
 
   "GHBit.RGB_Program|block": "手柄七彩流水灯",
   "GHBit.Music_Handle|block": "手柄音乐播放|%index",
   "GHBit.Servo_Handle|block": "手柄舵机|编号 %num|角度 %value",
   "GHBit.Ultrasonic_Handle|block": "超声波返回（cm）",
   "GHBit.Min_Motor_Shake|block": "手柄遥控器|震动 %value",
-  "GHBit.Rocker|block": "手柄遥杆|返回 %value",
-  "GHBit.Button|block": "手柄按键|选择 %num|返回 %value",
-  "GHBit.RGB_Colorful|block": "手柄RGB探照灯| %value"
-
+  "GHBit.Rocker|block": "手柄遥杆|返回 %value"
 }
