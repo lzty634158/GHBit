@@ -247,7 +247,7 @@ namespace GHBit {
     }
     
     //% blockId=GHBit_Rocker block="Rocker|value %value"
-    //% weight=94
+    //% weight=96
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
@@ -291,7 +291,7 @@ namespace GHBit {
     }
     
     //% blockId=GHBit_Button block="Button|num %num|value %value"
-    //% weight=96
+    //% weight=95
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
@@ -342,8 +342,33 @@ namespace GHBit {
         return temp;         
     }
     
+    //% blockId==onKey block="Key %pin |Press"
+    //% weight=80
+    //% blockGap=10
+    //% color="#C814B8"
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
+    export function onKey(pin: enRocker, body: Action): void {
+        let Pin = 0;
+
+        //Read pin 
+        if (pin == enRocker.Up) {
+            Pin = DigitalPin.P1;
+        } else if (pin == enRocker.Down) {
+            Pin = DigitalPin.P1;
+        } else if (pin == enRocker.Left) {
+            Pin = DigitalPin.P1;
+        } else if (pin == enRocker.Right) {
+            Pin = DigitalPin.P1;
+        } else if (pin == enRocker.Press) {
+            Pin = DigitalPin.P8;
+        } else if (pin == enRocker.Nostate) {
+            return;
+        }
+        pins.onPulsed(Pin, PulseValue.Low, body);
+    }
+    
     //% blockId=GHBit_Music_Handle block="Music_Handle|%index"
-    //% weight=93
+    //% weight=92
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -373,7 +398,7 @@ namespace GHBit {
     }
     
     //% blockId=GHBit_Servo_Handle block="Servo_Handle|num %num|value %value"
-    //% weight=92
+    //% weight=91
     //% blockGap=10
     //% color="#C814B8"
     //% num.min=1 num.max=4 value.min=0 value.max=180
@@ -389,7 +414,7 @@ namespace GHBit {
         
     //% blockId=GHBit_Ultrasonic_Handle block="ultrasonic return distance(cm)"
     //% color="#C814B8"
-    //% weight=91
+    //% weight=90
     //% blockGap=10
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Ultrasonic_Handle(): number {
@@ -408,7 +433,7 @@ namespace GHBit {
     }
 
     //% blockId=GHBit_RGB_Colorful block="RGB_Colorful|%value"
-    //% weight=90
+    //% weight=89
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
@@ -466,7 +491,7 @@ namespace GHBit {
     }
     
     //% blockId=GHBit_Stepper_Motor block="Stepper_Motor|value %value"
-    //% weight=89
+    //% weight=88
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
@@ -528,7 +553,7 @@ namespace GHBit {
         } 
     }  
     //% blockId=GHBit_Min_Motor block="Min_Motor|value %value"
-    //% weight=88
+    //% weight=87
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
@@ -547,7 +572,7 @@ namespace GHBit {
         }               
     }   
     //% blockId=GHBit_Rotate block="Rotate|value %value"
-    //% weight=87
+    //% weight=86
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
@@ -588,7 +613,7 @@ namespace GHBit {
         return a;
     }
     //% blockId=GHBit_Beam block="Beam|value %value"
-    //% weight=86
+    //% weight=85
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=6
