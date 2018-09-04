@@ -1,4 +1,4 @@
-# HelloBot
+# GHBit
 
 Extension for Yahboom GHBit
 
