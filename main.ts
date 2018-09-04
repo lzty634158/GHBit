@@ -349,8 +349,10 @@ namespace GHBit {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
     export function onKey(pin: enButton, body: Action): void {
         let Pin = 0;
-
-        //Read pin 
+        pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P16, PinPullMode.PullUp); 
         if (pin == enButton.B1) {
             Pin = DigitalPin.P13;
         } else if (pin == enButton.B2) {
