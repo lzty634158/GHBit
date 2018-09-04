@@ -343,7 +343,7 @@ namespace GHBit {
     }
     
     //% blockId==onKey block="Key %pin |Press"
-    //% weight=80
+    //% weight=94
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
