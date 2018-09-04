@@ -347,22 +347,18 @@ namespace GHBit {
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
-    export function onKey(pin: enRocker, body: Action): void {
+    export function onKey(pin: enButton, body: Action): void {
         let Pin = 0;
 
         //Read pin 
-        if (pin == enRocker.Up) {
-            Pin = DigitalPin.P1;
-        } else if (pin == enRocker.Down) {
-            Pin = DigitalPin.P1;
-        } else if (pin == enRocker.Left) {
-            Pin = DigitalPin.P1;
-        } else if (pin == enRocker.Right) {
-            Pin = DigitalPin.P1;
-        } else if (pin == enRocker.Press) {
-            Pin = DigitalPin.P8;
-        } else if (pin == enRocker.Nostate) {
-            return;
+        if (pin == enButton.B1) {
+            Pin = DigitalPin.P13;
+        } else if (pin == enButton.B2) {
+            Pin = DigitalPin.P14;
+        } else if (pin == enButton.B3) {
+            Pin = DigitalPin.P15;
+        } else if (pin == enButton.B4) {
+            Pin = DigitalPin.P16;
         }
         pins.onPulsed(Pin, PulseValue.Low, body);
     }
