@@ -235,11 +235,11 @@ namespace GHBit {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
     export function Min_Motor_Shake(value: Motorshock): void {
         switch (value) {
-            case Motorshock.OFF: {
+            case Motorshock.ON: {
               setPwm(0, 0, 4095);
               break;
             }
-            case Motorshock.ON: {
+            case Motorshock.OFF: {
               setPwm(0, 0, 0);
               break;
             }
@@ -558,13 +558,13 @@ namespace GHBit {
     export function Min_Motor(value: Motorshock): void {
         switch (value) {
             case Motorshock.ON: {
-              setPwm(5, 0, 4095);
-              setPwm(6, 0, 0);
+              setPwm(7, 0, 4095);
+              setPwm(8, 0, 0);
               break;
             }
             case Motorshock.OFF: {
-              setPwm(5, 0, 0);
-              setPwm(6, 0, 0);
+              setPwm(7, 0, 0);
+              setPwm(8, 0, 0);
               break;
             }
         }               
