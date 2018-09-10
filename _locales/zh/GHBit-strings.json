@@ -9,7 +9,7 @@
   "GHBit.Servo_Handle|block": "手柄舵机|编号 %num|角度 %value",
   "GHBit.Ultrasonic_Handle|block": "超声波返回（cm）",
   "GHBit.RGB_Colorful|block": "手柄RGB探照灯| %value",
-  "GHBit.Stepper_Motor|block": "步进电机| %value",
+  "GHBit.Stepper_Motor|block": "步进电机| %value|速度%value1",
   "GHBit.Min_Motor|block": "风扇| %value",
   "GHBit.Rotate|block": "旋钮角度|%value",
   "GHBit.Beam|block": "光照|%value"

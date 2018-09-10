@@ -39,14 +39,22 @@ namespace GHBit {
         Stepper1
     }
     export enum Angle {
-        //% blockId="Angle0" block="0"
+        //% blockId="Angle0" block="1档"
         Angle0 = 0,
-        //% blockId="Angle1" block="90"
+        //% blockId="Angle1" block="2档"
         Angle1,
-        //% blockId="Angle2" block="180"
+        //% blockId="Angle2" block="3档"
         Angle2,
-        //% blockId="Angle3" block="270"
-        Angle3
+        //% blockId="Angle3" block="4档"
+        Angle3,
+        //% blockId="Angle4" block="5档"
+        Angle4,
+        //% blockId="Angle5" block="6档"
+        Angle5,
+        //% blockId="Angle6" block="7档"
+        Angle6,
+        //% blockId="Angle7" block="8档"
+        Angle7
     }
     export enum Beamstate {
      	//% blockId="bright" block="白天"
@@ -92,6 +100,15 @@ namespace GHBit {
         OFF = 0,
         //% blockId="ON" block="开"
         ON
+    }
+    
+    export enum speed {
+        //% blockId="speed1" block="1"
+        speed1 = 2000,
+        //% blockId="speed2" block="2"
+        speed2 = 3000,
+        //% blockId="speed3" block="3"
+        speed3 = 4000
     }
     
     export enum enRocker {
@@ -488,57 +505,68 @@ namespace GHBit {
         }
     }
     
-    //% blockId=GHBit_Stepper_Motor block="Stepper_Motor|value %value"
+    //% blockId=GHBit_Stepper_Motor block="Stepper_Motor|value %value|value1 %value1"
     //% weight=88
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
-    export function Stepper_Motor(value: STepper): void {
+    export function Stepper_Motor(value: STepper, value1: speed): void {
+    	  let a = 64;  
         switch (value) {
-            case STepper.Stepper: {           	             
-              setPwm(1, 0, 4095);
-              setPwm(2, 0, 0);
-              setPwm(3, 0, 0);
-              setPwm(4, 0, 0);
-              control.waitMicros(2000);                       
-              setPwm(1, 0, 0);
-              setPwm(2, 0, 4095);
-              setPwm(3, 0, 0);
-              setPwm(4, 0, 0);
-              control.waitMicros(2000);                         
-              setPwm(1, 0, 0);
-              setPwm(2, 0, 0);
-              setPwm(3, 0, 4095);
-              setPwm(4, 0, 0);
-              control.waitMicros(2000);              
-              setPwm(1, 0, 0);
-              setPwm(2, 0, 0);
-              setPwm(3, 0, 0);
-              setPwm(4, 0, 4095);
-              control.waitMicros(2000);   
+            case STepper.Stepper: { 
+            	while( a )    
+            	{     	             
+                setPwm(1, 0, 4095);
+                setPwm(2, 0, 4095);
+                setPwm(3, 0, 0);
+                setPwm(4, 0, 0);
+                control.waitMicros(value1);                       
+                setPwm(1, 0, 0);
+                setPwm(2, 0, 4095);
+                setPwm(3, 0, 4095);
+                setPwm(4, 0, 0);
+                control.waitMicros(value1);                         
+                setPwm(1, 0, 0);
+                setPwm(2, 0, 0);
+                setPwm(3, 0, 4095);
+                setPwm(4, 0, 4095);
+                control.waitMicros(value1);              
+                setPwm(1, 0, 4095);
+                setPwm(2, 0, 0);
+                setPwm(3, 0, 0);
+                setPwm(4, 0, 4095);
+                control.waitMicros(value1); 
+                a--;
+              }  
+                a = 0;
               break;
             }
             case STepper.Stepper0: {
-              setPwm(1, 0, 0);
-              setPwm(2, 0, 0);
-              setPwm(3, 0, 0);
-              setPwm(4, 0, 4095);
-              control.waitMicros(3000);                       
-              setPwm(1, 0, 0);
-              setPwm(2, 0, 0);
-              setPwm(3, 0, 4095);
-              setPwm(4, 0, 0);
-              control.waitMicros(3000);                         
-              setPwm(1, 0, 0);
-              setPwm(2, 0, 4095);
-              setPwm(3, 0, 0);
-              setPwm(4, 0, 0);
-              control.waitMicros(3000);              
-              setPwm(1, 0, 4095);
-              setPwm(2, 0, 0);
-              setPwm(3, 0, 0);
-              setPwm(4, 0, 0);
-              control.waitMicros(3000);  
+            	while( a )
+            	{ 
+                setPwm(1, 0, 0);
+                setPwm(2, 0, 0);
+                setPwm(3, 0, 4095);
+                setPwm(4, 0, 4095);
+                control.waitMicros(value1);                       
+                setPwm(1, 0, 0);
+                setPwm(2, 0, 4095);
+                setPwm(3, 0, 4095);
+                setPwm(4, 0, 0);
+                control.waitMicros(value1);                         
+                setPwm(1, 0, 4095);
+                setPwm(2, 0, 4095);
+                setPwm(3, 0, 0);
+                setPwm(4, 0, 0);
+                control.waitMicros(value1);              
+                setPwm(1, 0, 4095);
+                setPwm(2, 0, 0);
+                setPwm(3, 0, 0);
+                setPwm(4, 0, 4095);
+                control.waitMicros(value1);  
+                 a--;
+              }
+                a = 0;
               break;
             }
             case STepper.Stepper1: {
@@ -555,15 +583,45 @@ namespace GHBit {
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=12
-    export function Min_Motor(value: Motorshock): void {
+    export function Min_Motor(value: Angle): void {
         switch (value) {
-            case Motorshock.ON: {
-              setPwm(7, 0, 4095);
+            case Angle.Angle0: {
+              setPwm(7, 0, 0);
               setPwm(8, 0, 0);
               break;
             }
-            case Motorshock.OFF: {
-              setPwm(7, 0, 0);
+            case Angle.Angle1: {
+              setPwm(7, 0, 600);
+              setPwm(8, 0, 0);
+              break;
+            }
+            case Angle.Angle2: {
+              setPwm(7, 0, 1200);
+              setPwm(8, 0, 0);
+              break;
+            }
+            case Angle.Angle3: {
+              setPwm(7, 0, 1800);
+              setPwm(8, 0, 0);
+              break;
+            }
+            case Angle.Angle4: {
+              setPwm(7, 0, 2400);
+              setPwm(8, 0, 0);
+              break;
+            }
+            case Angle.Angle5: {
+              setPwm(7, 0, 3000);
+              setPwm(8, 0, 0);
+              break;
+            }
+            case Angle.Angle6: {
+              setPwm(7, 0, 3600);
+              setPwm(8, 0, 0);
+              break;
+            }
+            case Angle.Angle7: {
+              setPwm(7, 0, 4095);
               setPwm(8, 0, 0);
               break;
             }
@@ -580,28 +638,56 @@ namespace GHBit {
         let a = false;
         switch (value) {
         	case Angle.Angle0: {
-        		if(y < 370)
+        		if(y < 128)
         	  	a = true;
         		else 
         			a = false;
         		 break;
           }
           case Angle.Angle1: {
-        		if(y < 650 && y > 370)
+        		if(y < 254 && y > 127)
         	  	a = true;
         		else 
         			a = false;
         		 break;
           }
           case Angle.Angle2: {
-        		if(y < 930 && y > 650)
+        		if(y < 381 && y > 253)
         	  	a = true;
         		else 
         			a = false;
         		 break;
           }
           case Angle.Angle3: {
-        		if(y > 930)
+        		if(y < 508 && y > 381)
+        	  	a = true;
+        		else 
+        			a = false;
+        		 break;
+          }
+          case Angle.Angle4: {
+        		if(y < 635 && y > 508)
+        	  	a = true;
+        		else 
+        			a = false;
+        		 break;
+          }
+          case Angle.Angle5: {
+        		if(y < 762 && y > 634)
+        	  	a = true;
+        		else 
+        			a = false;
+        		 break;
+          }
+          case Angle.Angle6: {
+        		if(y < 889 && y > 761)
+        	  	a = true;
+        		else 
+        			a = false;
+        		 break;
+          }
+          case Angle.Angle7: {
+        		if( y > 888)
         	  	a = true;
         		else 
         			a = false;
@@ -610,6 +696,7 @@ namespace GHBit {
         }
         return a;
     }
+    
     //% blockId=GHBit_Beam block="Beam|value %value"
     //% weight=85
     //% blockGap=10
