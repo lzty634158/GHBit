@@ -39,21 +39,21 @@ namespace GHBit {
         Stepper1
     }
     export enum Angle {
-        //% blockId="Angle0" block="1档"
+        //% blockId="Angle0" block="first gear"
         Angle0 = 0,
-        //% blockId="Angle1" block="2档"
+        //% blockId="Angle1" block="second gear"
         Angle1,
-        //% blockId="Angle2" block="3档"
+        //% blockId="Angle2" block="third gear"
         Angle2,
-        //% blockId="Angle3" block="4档"
+        //% blockId="Angle3" block="forth gear"
         Angle3,
-        //% blockId="Angle4" block="5档"
+        //% blockId="Angle4" block="fifth gear"
         Angle4,
-        //% blockId="Angle5" block="6档"
+        //% blockId="Angle5" block="sixth gear"
         Angle5,
-        //% blockId="Angle6" block="7档"
+        //% blockId="Angle6" block="seventh gear"
         Angle6,
-        //% blockId="Angle7" block="8档"
+        //% blockId="Angle7" block="eighth gear"
         Angle7
     }
     export enum Beamstate {
