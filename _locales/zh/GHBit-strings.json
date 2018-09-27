@@ -12,6 +12,42 @@
   "GHBit.Stepper_Motor|block": "步进电机| %value|速度%value1",
   "GHBit.Min_Motor|block": "风扇| %value",
   "GHBit.Rotate|block": "旋钮角度|%value",
-  "GHBit.Beam|block": "光照|%value"
+  "GHBit.Beam|block": "光照|%value",
+  
+  "GHBit.STepper.Stepper|block": "正转",
+  "GHBit.STepper.Stepper0|block": "反转",
+  "GHBit.STepper.Stepper1|block": "停止",
+  
+  "GHBit.Angle.Angle0|block": "1挡",
+  "GHBit.Angle.Angle1|block": "2挡",
+  "GHBit.Angle.Angle2|block": "3挡",
+  "GHBit.Angle.Angle3|block": "4挡",
+  "GHBit.Angle.Angle4|block": "5挡",
+  "GHBit.Angle.Angle5|block": "6挡",
+  "GHBit.Angle.Angle6|block": "7挡",
+  "GHBit.Angle.Angle7|block": "8挡",
+	
+	"GHBit.Beamstate.bright|block": "白天",
+	"GHBit.Beamstate.dark|block": "黑夜",
+	"GHBit.Motorshock.OFF|block": "关",
+	"GHBit.Motorshock.ON|block": "开",
+	
+	"GHBit.enRocker.Nostate|block": "无",
+	"GHBit.enRocker.Up|block": "上",
+	"GHBit.enRocker.Down|block": "下",
+	"GHBit.enRocker.Left|block": "左",
+	"GHBit.enRocker.Right|block": "右",
+	"GHBit.enRocker.Press|block": "按下",
+	"GHBit.enButtonState.Press|block": "按下",
+	"GHBit.enButtonState.Realse|block": "松开",
+	
+	"GHBit.enColor.OFF|block": "熄灭",
+	"GHBit.enColor.RED|block": "红色",
+	"GHBit.enColor.GREEN|block": "绿色",
+	"GHBit.enColor.BLUE|block": "蓝色",
+	"GHBit.enColor.WHITE|block": "白色",
+	"GHBit.enColor.CYAN|block": "青色",
+	"GHBit.enColor.PINKISH|block": "品红",
+	"GHBit.enColor.YELLOW|block": "黄色"
 
 }

@@ -31,11 +31,11 @@ namespace GHBit {
     let yahStrip: neopixel.Strip;
     
     export enum STepper {
-        //% blockId="Stepper" block="正转"
+        //% blockId="Stepper" block="foreward"
         Stepper = 0,
-        //% blockId="Stepper0" block="反转"
+        //% blockId="Stepper0" block="reversal"
         Stepper0,
-        //% blockId="Stepper1" block="停止"
+        //% blockId="Stepper1" block="Stop"
         Stepper1
     }
     export enum Angle {
@@ -57,9 +57,9 @@ namespace GHBit {
         Angle7
     }
     export enum Beamstate {
-     	//% blockId="bright" block="白天"
+     	//% blockId="bright" block="Bright"
      	bright = 1,
-     	//% blockId="dark" block="黑夜"
+     	//% blockId="dark" block="Dark"
      	dark
     }
     export enum enMusic {
@@ -96,9 +96,9 @@ namespace GHBit {
     }
     
     export enum Motorshock {
-        //% blockId="OFF" block="关"
+        //% blockId="OFF" block="OFF"
         OFF = 0,
-        //% blockId="ON" block="开"
+        //% blockId="ON" block="ON"
         ON
     }
     
@@ -112,24 +112,24 @@ namespace GHBit {
     }
     
     export enum enRocker {
-        //% blockId="Nostate" block="无"
+        //% blockId="Nostate" block="Nostate"
         Nostate = 0,
-        //% blockId="Up" block="上"
+        //% blockId="Up" block="Up"
         Up,
-        //% blockId="Down" block="下"
+        //% blockId="Down" block="Down"
         Down,
-        //% blockId="Left" block="左"
+        //% blockId="Left" block="Left"
         Left,
-        //% blockId="Right" block="右"
+        //% blockId="Right" block="Right"
         Right,
-        //% blockId="Press" block="按下"
+        //% blockId="Press" block="Press"
         Press
     }
     
     export enum enButtonState {
-        //% blockId="Press" block="按下"
+        //% blockId="Press" block="Press"
         Press = 0,
-        //% blockId="Realse" block="松开"
+        //% blockId="Realse" block="Realse"
         Realse = 1
     }
     
@@ -142,21 +142,21 @@ namespace GHBit {
     }
     
     export enum enColor {
-        //% blockId="OFF" block="熄灭"
+        //% blockId="OFF" block="OFF"
         OFF = 0,
-        //% blockId="RED" block="红色"
+        //% blockId="RED" block="RED"
         RED,
-        //% blockId="GREEN" block="绿色"
+        //% blockId="GREEN" block="GREEN"
         GREEN,
-        //% blockId="BLUE" block="蓝色"
+        //% blockId="BLUE" block="BLUE"
         BLUE,
-        //% blockId="WHITE" block="白色"
+        //% blockId="WHITE" block="WHITE"
         WHITE,
-        //% blockId="CYAN" block="青色"
+        //% blockId="CYAN" block="CYAN"
         CYAN,
-        //% blockId="PINKISH" block="品红"
+        //% blockId="PINKISH" block="PINKISH"
         PINKISH,
-        //% blockId="YELLOW" block="黄色"
+        //% blockId="YELLOW" block="YELLOW"
         YELLOW
     }
     
