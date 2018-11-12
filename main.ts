@@ -444,7 +444,7 @@ namespace GHBit {
 
         // read pulse
         let d = pins.pulseIn(DigitalPin.P11, PulseValue.High, 43200);
-        return d / 40;
+        return  Math.floor(d / 40);
     }
 
     //% blockId=GHBit_RGB_Colorful block="RGB_Colorful|%value"
