@@ -1,6 +1,6 @@
 # GHBit
 
-Extension for Yahboom GHBit
+Extension for Yahboom GHBit 2.0.0
 
 ## License
 
