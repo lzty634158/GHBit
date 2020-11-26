@@ -359,12 +359,12 @@ namespace GHBit {
         return temp;         
     }
     
-    //% blockId==onKey block="Key %pin |Press"
+    //% blockId==onEvent block="Key %pin |Press"
     //% weight=94
     //% blockGap=10
     //% color="#C814B8"
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
-    export function onKey(pin: enButton, body: Action): void {
+    export function onEvent(pin: enButton, body: Action): void {
         let Pin = 0;
         // pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
         // pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
