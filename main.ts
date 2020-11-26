@@ -370,10 +370,10 @@ namespace GHBit {
         // pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
         // pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
         // pins.setPull(DigitalPin.P16, PinPullMode.PullUp); 
-        pins.setEvents(DigitalPin.P13, PinEventType.Edge)
-        pins.setEvents(DigitalPin.P14, PinEventType.Edge)
-        pins.setEvents(DigitalPin.P15, PinEventType.Edge)
-        pins.setEvents(DigitalPin.P16, PinEventType.Edge)
+      pins.setEvents(DigitalPin.P13, PinEventType.Edge);
+      pins.setEvents(DigitalPin.P14, PinEventType.Edge);
+      pins.setEvents(DigitalPin.P15, PinEventType.Edge);
+      pins.setEvents(DigitalPin.P16, PinEventType.Edge);
 
         if (pin == enButton.B1) {
             Pin = EventBusSource.MICROBIT_ID_IO_P13;
