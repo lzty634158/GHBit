@@ -1,7 +1,7 @@
 {
     "name": "GHBit",
-    "version": "2.0.0",
-    "description": "Extension for YahBoom GHBit V2.0.0",
+    "version": "3.0.0",
+    "description": "Extension for YahBoom GHBit_V1/V2 V3.0.0",
     "license": "MIT",
     "dependencies": {
         "core": "*",

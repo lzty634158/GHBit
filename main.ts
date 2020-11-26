@@ -366,20 +366,26 @@ namespace GHBit {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
     export function onKey(pin: enButton, body: Action): void {
         let Pin = 0;
-        pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
-        pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
-        pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
-        pins.setPull(DigitalPin.P16, PinPullMode.PullUp); 
+        // pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
+        // pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
+        // pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
+        // pins.setPull(DigitalPin.P16, PinPullMode.PullUp); 
+        pins.setEvents(DigitalPin.P13, PinEventType.Edge)
+        pins.setEvents(DigitalPin.P14, PinEventType.Edge)
+        pins.setEvents(DigitalPin.P15, PinEventType.Edge)
+        pins.setEvents(DigitalPin.P16, PinEventType.Edge)
+
         if (pin == enButton.B1) {
-            Pin = DigitalPin.P13;
+            Pin = EventBusSource.MICROBIT_ID_IO_P13;
         } else if (pin == enButton.B2) {
-            Pin = DigitalPin.P14;
+            Pin = EventBusSource.MICROBIT_ID_IO_P14;
         } else if (pin == enButton.B3) {
-            Pin = DigitalPin.P15;
+            Pin = EventBusSource.MICROBIT_ID_IO_P15;
         } else if (pin == enButton.B4) {
-            Pin = DigitalPin.P16;
+            Pin = EventBusSource.MICROBIT_ID_IO_P16;
         }
-        pins.onPulsed(Pin, PulseValue.Low, body);
+        control.onEvent(Pin, EventBusValue.MICROBIT_PIN_EVT_FALL, body);
+        //pins.onPulsed(Pin, PulseValue.Low, body);
     }
     
     //% blockId=GHBit_Music_Handle block="Music_Handle|%index"
