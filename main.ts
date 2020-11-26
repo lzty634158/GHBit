@@ -376,15 +376,15 @@ namespace GHBit {
       pins.setEvents(DigitalPin.P16, PinEventType.Edge);
 
         if (pin == enButton.B1) {
-            Pin = EventBusSource.MICROBIT_ID_IO_P13;
+            Pin = DAL.MICROBIT_ID_IO_P13;
         } else if (pin == enButton.B2) {
-            Pin = EventBusSource.MICROBIT_ID_IO_P14;
+            Pin = DAL.MICROBIT_ID_IO_P14;
         } else if (pin == enButton.B3) {
-            Pin = EventBusSource.MICROBIT_ID_IO_P15;
+            Pin = DAL.MICROBIT_ID_IO_P15;
         } else if (pin == enButton.B4) {
-            Pin = EventBusSource.MICROBIT_ID_IO_P16;
+            Pin = DAL.MICROBIT_ID_IO_P16;
         }
-        control.onEvent(Pin, EventBusValue.MICROBIT_PIN_EVT_FALL, body);
+        control.onEvent(Pin, DAL.MICROBIT_PIN_EVT_FALL, body);
         //pins.onPulsed(Pin, PulseValue.Low, body);
     }
     
