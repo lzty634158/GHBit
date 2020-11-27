@@ -366,14 +366,14 @@ namespace GHBit {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=5
     export function onEvent(pin: enButton, body: Action): void {
         let Pin = 0;
-        // pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
-        // pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
-        // pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
-        // pins.setPull(DigitalPin.P16, PinPullMode.PullUp); 
-      pins.setEvents(DigitalPin.P13, PinEventType.Edge);
-      pins.setEvents(DigitalPin.P14, PinEventType.Edge);
-      pins.setEvents(DigitalPin.P15, PinEventType.Edge);
-      pins.setEvents(DigitalPin.P16, PinEventType.Edge);
+        pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P14, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P15, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P16, PinPullMode.PullUp); 
+        pins.setEvents(DigitalPin.P13, PinEventType.Edge);
+        pins.setEvents(DigitalPin.P14, PinEventType.Edge);
+        pins.setEvents(DigitalPin.P15, PinEventType.Edge);
+        pins.setEvents(DigitalPin.P16, PinEventType.Edge);
 
         if (pin == enButton.B1) {
             Pin = DAL.MICROBIT_ID_IO_P13;
@@ -385,6 +385,8 @@ namespace GHBit {
             Pin = DAL.MICROBIT_ID_IO_P16;
         }
         control.onEvent(Pin, DAL.MICROBIT_PIN_EVT_FALL, body);
+
+      
         //pins.onPulsed(Pin, PulseValue.Low, body);
     }
     
