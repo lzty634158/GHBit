@@ -413,25 +413,33 @@ namespace GHBit {
     //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
     export function Ultrasonic_Handle(): number {
 
-        // send pulse
+      // send pulse
+      pins.setPull(DigitalPin.P12, PinPullMode.PullNone)
+      pins.digitalWritePin(DigitalPin.P12, 0)
+      control.waitMicros(4)
+      pins.digitalWritePin(DigitalPin.P12, 1)
+      control.waitMicros(15)
+      pins.digitalWritePin(DigitalPin.P12, 0)
+      const d = pins.pulseIn(DigitalPin.P11, PulseValue.High, 500 * 40);
+      return Math.idiv(d, 40)
+    }
 
-      
-      // send pulse   
-      let list:Array<number> = [0, 0, 0, 0, 0];
-      for (let i = 0; i < 5; i++) {
-          pins.setPull(DigitalPin.P12, PinPullMode.PullNone);
-          pins.digitalWritePin(DigitalPin.P12, 0);
-          control.waitMicros(2);
-          pins.digitalWritePin(DigitalPin.P12, 1);
-          control.waitMicros(15);
-          pins.digitalWritePin(DigitalPin.P12, 0);
-  
-          let d = pins.pulseIn(DigitalPin.P11, PulseValue.High, 43200);
-          list[i] = Math.floor(d / 40)
-      }
-      list.sort();
-      let length = (list[1] + list[2] + list[3])/3;
-      return  Math.floor(length);
+    //% blockId=GHBit_Ultrasonic_Handle_V2 block="ultrasonic_V2 return distance(cm)"
+    //% color="#C814B8"
+    //% weight=90
+    //% blockGap=10
+    //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
+    export function Ultrasonic_Handle_V2(): number {
+
+      // send pulse
+      pins.setPull(DigitalPin.P12, PinPullMode.PullNone)
+      pins.digitalWritePin(DigitalPin.P12, 0)
+      control.waitMicros(4)
+      pins.digitalWritePin(DigitalPin.P12, 1)
+      control.waitMicros(15)
+      pins.digitalWritePin(DigitalPin.P12, 0)
+      const d = pins.pulseIn(DigitalPin.P11, PulseValue.High, 500 * 58);
+      return Math.idiv(d, 58)
     }
 
     //% blockId=GHBit_RGB_Colorful block="RGB_Colorful|%value"
