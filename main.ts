@@ -282,7 +282,7 @@ namespace GHBit {
             now_state = enRocker.Up;
 
         }
-        else if (x > 900) //下
+        else if (x > 730) //下 900 -> 730
         {
 
             now_state = enRocker.Down;
@@ -293,7 +293,7 @@ namespace GHBit {
             {
                 now_state = enRocker.Right;
             }
-            else if (y > 900) //左
+            else if (y > 730) //左 900 -> 730
             {
                 now_state = enRocker.Left;
             }
